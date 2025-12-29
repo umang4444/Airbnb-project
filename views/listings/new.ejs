@@ -1,0 +1,79 @@
+<% layout("layouts/boilerplate") %>
+    <div class="row">
+        <div class="col-8 offset-2">
+            <br><br>
+            <h3>CREATE A NEW LISTING</h3>
+
+            <form method="POST" action="/listings" class="needs-validation" novalidate enctype="multipart/form-data">
+
+                <!-- Title -->
+                <div class="mb-3">
+                    <label class="form-label">Title</label>
+                    <input type="text" name="listing[title]" placeholder="Enter a Catchy Title" class="form-control"
+                        required />
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+      Enter the Title
+    </div>
+                </div>
+
+                <!-- Description -->
+                <div class="mb-3">
+                    <label class="form-label">Description</label>
+                    <textarea name="listing[description]" placeholder="Enter Description" class="form-control"
+                        required></textarea>
+                    <div class="invalid-feedback">
+                        Please enter a short description
+                    </div>
+                </div>
+
+                <!-- Image -->
+                <!-- <div class="mb-3">
+                    <label class="form-label">Image Link</label>
+                    <input type="text" name="listing[image][url]" placeholder="enter image url" class="form-control"
+                       />
+                </div> -->
+                 <div class="mb-3">
+                    <label class="form-label"> Uplode Image</label>
+                    <input type="file" name="image"  class="form-control"
+                      required />
+                </div>
+                <div class="row">
+                    <!-- Price -->
+                    <div class="mb-3 col-md-4">
+                        <label class="form-label">Price</label>
+                        <input type="number" name="listing[price]" placeholder="1200" class="form-control" required />
+                        <div class="invalid-feedback">
+                            Enter the price
+                        </div>
+                    </div>
+
+                    <!-- Country -->
+                    <div class="mb-3 col-md-6">
+                        <label class="form-label">Country</label>
+                        <input type="text" name="listing[country]" placeholder="Enter Your Country" class="form-control"
+                            required />
+                        <div class="invalid-feedback">
+                            Enter the country
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Location -->
+                <div class="mb-3">
+                    <label class="form-label">Location</label>
+                    <input type="text" name="listing[location]" placeholder="Enter Your Location" class="form-control"
+                        required />
+                    <div class="invalid-feedback">
+                        Enter the correct location
+                    </div>
+                </div>
+
+                <button class="btn btn-dark add-btn">ADD</button>
+                <br><br>
+            </form>
+        </div>
+    </div>
