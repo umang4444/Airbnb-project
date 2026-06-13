@@ -12,12 +12,11 @@ const mongoose = require("mongoose");
 const methodOverride = require("method-override");
 const  ejsMate = require("ejs-mate");
 const session = require("express-session");
-const mongoStore=require("connect-mongo");
+const MongoStore = require("connect-mongo");
 const flash = require("connect-flash");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user.js");
-
 
 
 app.engine('ejs', ejsMate);
@@ -28,6 +27,15 @@ const listings =require("./routes/listing.js");
 const reviews =require("./routes/review.js");
 const user =require("./routes/user.js");
 const dbUrl=process.env.ATLASDB_URL;
+
+
+const store = MongoStore.create({
+    mongoUrl: process.env.ATLASDB_URL,
+    crypto: {
+        secret: process.env.SESSION_SECRET,
+    },
+    touchAfter: 24 * 3600,
+});
 
 main()
 .then( () => {
@@ -47,15 +55,6 @@ app.use(methodOverride("_method"));
 
 app.use(express.static(path.join(__dirname, "/public")));
 
-const MongoStore = require("connect-mongo");
-
-const store = MongoStore.create({
-    mongoUrl: process.env.ATLASDB_URL,
-    crypto: {
-        secret: process.env.SESSION_SECRET,
-    },
-    touchAfter: 24 * 3600, 
-});
 
 store.on("error",(err) => {
     console.log("error in mongo session",err);
