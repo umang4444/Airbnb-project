@@ -106,6 +106,10 @@ app.use("/listings/:id/reviews",reviews);
 app.use("/",user);
 
 
+app.get("/", (req, res) => {
+    res.redirect("/listings");
+});
+
 
 
 // app.get("/testListing", async (req,res) => {
@@ -140,6 +144,8 @@ app.use((err, req, res, next) => {
 
 
 
-app.listen(8080, () => {
-   console.log("server is active");
+const PORT = process.env.PORT || 8080;
+
+app.listen(PORT, () => {
+   console.log(`server is active on port ${PORT}`);
 });
