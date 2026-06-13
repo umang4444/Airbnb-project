@@ -50,9 +50,9 @@ app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, "/public")));
 
 
-store.on("error",(err) => {
-    console.log("error in mongo session",err);
-});
+// store.on("error",(err) => {
+//     console.log("error in mongo session",err);
+// });
 
 
 const sessionOptions = {
